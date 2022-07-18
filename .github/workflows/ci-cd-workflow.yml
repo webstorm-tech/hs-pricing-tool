@@ -35,14 +35,14 @@ jobs:
         run: |
           npm ci
 
-      - name: Build
+      - name: Build Application
         run: |
-          npm run build
+          npm run ci-build
 
       # - name: Lint
       #   run: |
       #     npm run lint
 
-      - name: Test
+      - name: Run Unit Tests
         run: |
-          npm run test
+          npm run ci-test
