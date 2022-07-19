@@ -2,6 +2,7 @@ name: ci-cd-workflow
 
 on:
   push:
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -35,14 +36,18 @@ jobs:
         run: |
           npm ci
 
-      - name: Build
+      - name: Build Application
         run: |
-          npm run build
+          npm run build:prod
 
-      # - name: Lint
-      #   run: |
-      #     npm run lint
-
-      - name: Test
+      # Feature branches do not need to be linted
+      # Pull Requests should be linted
+      # The main branch should also be linted
+      - name: Lint
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'pull_request' }}
         run: |
-          npm run test
+          npm run lint
+
+      - name: Run Unit Tests
+        run: |
+          npm run test:prod
