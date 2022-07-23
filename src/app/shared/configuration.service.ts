@@ -5,17 +5,21 @@ import { IConfiguration } from './configuration';
   providedIn: 'root'
 })
 export class ConfigurationService {
-  private config: IConfiguration;
+  private configuration: IConfiguration;
 
   constructor() {
-    this.config = { "locationName": "Pottstown, PA" }
+    this.configuration = { "locationName": "" }
   }
 
   get locationName() {
-    return this.config.locationName;
+    return this.configuration.locationName;
   }
 
   get setupComplete() {
-    return true;
+    return false;
+  }
+
+  getConfiguration():IConfiguration {
+    return this.configuration;
   }
 }

@@ -7,6 +7,7 @@ import { NavComponent } from './nav/nav.component';
 import { ProductsListComponent } from './products/products-list.component';
 import { SummaryComponent } from './home/summary.component';
 import { SetupComponent } from './config/setup.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,9 @@ import { SetupComponent } from './config/setup.component';
     SetupComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
